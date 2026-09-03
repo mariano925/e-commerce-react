@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+:root {
+
+  --color-fondo: #FAFAF8;
+
+  --color-superficie: #FFFFFF;
+
+  --color-borde: #DCE6F0;
+
+  --color-texto: #0B2A5B;
+
+  --color-texto-secundario: #6B84A8;
+
+  --color-acento: #6CACE4;
+
+  --color-acento-hover: #4A8FCC;
+
+  --color-tecnologia: #0B2A5B;
+
+  --color-dorado: #C9A227;
+
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

@@ -1,41 +1,82 @@
-// Tercer componente de React.
-// ProductCard representa un producto individual.
-// Recibe datos mediante props.
+// Tarjeta individual de producto.
+
+import { Link } from 'react-router-dom'
 
 function ProductCard(props) {
-  return (
-    <article className="border rounded-lg p-4 shadow-md bg-white">
 
-      {/* La prop imagen permite mostrar una imagen diferente para cada producto. */}
-      <div className="h-40 rounded-md mb-4 overflow-hidden">
+  return (
+
+    <article className="group overflow-hidden rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie)] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+
+      {/* Imagen */}
+
+      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-white p-5 sm:h-64">
+
         <img
           src={props.imagen}
           alt={props.nombre}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-105"
         />
+
+        {/* Categoría */}
+
+        <span className="absolute left-3 top-3 rounded-full bg-[var(--color-texto)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm sm:left-4 sm:top-4 sm:text-xs">
+          {props.categoria}
+        </span>
+
       </div>
 
-      <h2 className="text-xl font-bold">
-        {props.nombre}
-      </h2>
 
-      <p className="text-gray-500">
-        {props.categoria}
-      </p>
+      {/* Información */}
 
-      <p className="text-lg font-semibold mt-2">
-        ${props.precio}
-      </p>
+      <div className="p-4 sm:p-5">
 
-      {/* Evento: al hacer clic, ejecutamos una acción. */}
-      <button
-        onClick={() => alert(`Producto: ${props.nombre}`)}
-        className="mt-4 w-full bg-gray-900 text-white py-2 rounded-md hover:bg-gray-700"
-      >
-        Ver producto
-      </button>
+        {/* Nombre */}
+
+        <h2 className="line-clamp-2 min-h-12 text-base font-bold leading-snug text-[var(--color-texto)] sm:min-h-14 sm:text-lg">
+          {props.nombre}
+        </h2>
+
+
+        {/* Valoración */}
+
+        <div className="mt-3 flex items-center gap-1.5 text-xs sm:text-sm">
+
+          <span className="tracking-wide text-[var(--color-dorado)]">
+            ★★★★★
+          </span>
+
+          <span className="font-semibold text-[var(--color-texto-secundario)]">
+            {props.rating}
+          </span>
+
+          <span className="text-[var(--color-texto-secundario)]">
+            ({props.opiniones})
+          </span>
+
+        </div>
+
+
+        {/* Precio */}
+
+        <p className="mt-3 text-xl font-bold text-[var(--color-texto)] sm:text-2xl">
+          ${props.precio}
+        </p>
+
+
+        {/* Detalle */}
+
+        <Link
+          to={`/producto/${props.id}`}
+          className="mt-4 block w-full rounded-xl bg-[var(--color-texto)] py-3 text-center text-sm font-bold text-white transition duration-300 hover:bg-[var(--color-acento-hover)] sm:mt-5 sm:text-base"
+        >
+          Ver producto
+        </Link>
+
+      </div>
 
     </article>
+
   )
 }
 
